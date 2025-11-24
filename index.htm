@@ -3,12 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ahmed Zahran - Backend Developer</title>
-    <!-- Tailwind CSS -->
+
+    <title>
+      Ahmed Zahran | Backend Developer - Node.js & Nest.js Specialist
+    </title>
+    <meta
+      name="title"
+      content="Ahmed Zahran | Backend Developer - Node.js & Nest.js Specialist"
+    />
+    <meta
+      name="description"
+      content="Portfolio of Ahmed Zahran, a Backend Developer based in Cairo. Expert in Node.js, Nest.js, and PostgreSQL. View projects including Medyour Healthcare App, Learning Management Systems (LMS), and real-time gaming backends."
+    />
+    <meta
+      name="keywords"
+      content="Ahmed Zahran, Backend Developer, Node.js Developer, Nest.js, API Development, Healthcare App Developer, LMS Backend, Gaming Backend, PostgreSQL, Cairo, Egypt"
+    />
+    <meta name="author" content="Ahmed Zahran" />
+
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://ahmedzahran550.github.io/portfolio/"
+    />
+    <meta
+      property="og:title"
+      content="Ahmed Zahran | Backend Developer Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Scalable server-side applications. Expert in Node.js, Nest.js, and modern backend technologies. Check out my work on Medyour and LMS systems."
+    />
+    <meta property="og:image" content="./1762421138799.jpg" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:title"
+      content="Ahmed Zahran | Backend Developer Portfolio"
+    />
+    <meta
+      property="twitter:description"
+      content="Expert Node.js & Nest.js Backend Developer. Exploring high-performance APIs for Healthcare and Education."
+    />
+    <meta property="twitter:image" content="./1762421138799.jpg" />
+    <link rel="icon" href="./assets/logo.png" type="image/jpeg" />
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- AOS Animation Library CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -35,8 +76,8 @@
             href="#"
             class="text-2xl font-bold gradient-text tracking-tighter"
             data-aos="fade-right"
-            >AZ.</a
-          >
+            ><img src="./assets/logo.png" width="20%"
+          /></a>
 
           <!-- Desktop Menu -->
           <div class="hidden md:flex space-x-8" data-aos="fade-left">
@@ -242,7 +283,7 @@
                 class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity duration-500"
               ></div>
               <img
-                src="./1762421138799.jpg"
+                src="./assets/1762421138799.jpg"
                 alt="Ahmed Zahran"
                 class="relative rounded-full w-full h-full object-cover border-2 border-gray-700/50 shadow-2xl z-10 transition-transform duration-500 group-hover:scale-[1.02]"
               />
@@ -1001,7 +1042,114 @@
         </p>
       </div>
     </footer>
+    <!-- repo modal -->
+    <div
+      id="repo-modal"
+      class="fixed inset-0 z-[100] hidden items-center justify-center px-4"
+      onclick="closeRepoModal()"
+    >
+      <div
+        class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
+      ></div>
 
+      <div
+        class="relative bg-gray-900 border border-gray-700 rounded-2xl p-8 max-w-md w-full text-center shadow-2xl transform transition-all scale-100"
+        onclick="event.stopPropagation()"
+      >
+        <div
+          class="w-16 h-16 bg-yellow-500/10 rounded-full flex items-center justify-center mx-auto mb-6 text-yellow-500"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-8 h-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+            />
+          </svg>
+        </div>
+
+        <h3 class="text-2xl font-bold text-white mb-2">Private Repository</h3>
+        <p class="text-gray-400 mb-8 leading-relaxed">
+          This project belongs to a company I worked with. The source code is
+          private to protect intellectual property and confidentiality.
+        </p>
+
+        <button
+          onclick="closeRepoModal()"
+          class="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg font-medium transition-all transform hover:scale-[1.02]"
+        >
+          Understood
+        </button>
+
+        <button
+          onclick="closeRepoModal()"
+          class="absolute top-4 right-4 text-gray-500 hover:text-white"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- video-modal  -->
+    <div
+      id="video-modal"
+      class="fixed inset-0 z-[110] hidden items-center justify-center px-4 bg-black/90 backdrop-blur-md transition-opacity"
+      onclick="closeVideoModal()"
+    >
+      <div
+        class="relative w-full max-w-5xl bg-black rounded-2xl overflow-hidden shadow-2xl border border-gray-800"
+        onclick="event.stopPropagation()"
+      >
+        <div
+          class="flex justify-between items-center p-4 border-b border-gray-800"
+        >
+          <h3 class="text-white font-semibold">Project Demo</h3>
+          <button
+            onclick="closeVideoModal()"
+            class="text-gray-400 hover:text-white transition-colors"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="relative aspect-video bg-black">
+          <video id="demo-player" class="w-full h-full" controls>
+            <source src="" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="./js/main.js"></script>
