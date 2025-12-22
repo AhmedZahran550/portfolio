@@ -134,25 +134,30 @@ const projects = [
   {
     title: "Labs for Home Gaming",
     description:
-      "Scalable gaming backend handling 500+ concurrent users with real-time game state synchronization.",
-    tech: ["Nest.js", "WebSockets", "PostgreSQL", "Redis"],
+      "Scalable gaming backend handling 500+ concurrent users with real-time game state synchronization. Built on the same robust backend infrastructure as the LMS platform.",
+    tech: ["Nest.js", "WebSockets", "PostgreSQL", "Redis", "Firebase"],
     highlights: [
       "Real-time multiplayer",
       "In-game transactions",
       "Low latency",
+      "Shared LMS backend",
     ],
 
-    isPrivate: true,
+    isPrivate: false,
+    repos: [
+      {
+        text: "Core Backend",
+        url: "https://github.com/AhmedZahran550/labs",
+      },
+      {
+        text: "firebase-functions",
+        url: "https://github.com/AhmedZahran550/labs-firebase-functions",
+      },
+    ],
     image:
       "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
 
-    demos: [
-      {
-        text: "Live Demo",
-        type: "link",
-        url: "https://google.com",
-      },
-    ],
+    demos: [],
   },
 ];
 
