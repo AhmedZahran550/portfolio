@@ -1,4 +1,8 @@
 /* Base Settings */
+html {
+  scroll-padding-top: 80px; /* Height of navbar for smooth scrolling */
+}
+
 body {
   background-color: #050505;
   color: #e5e5e5;
@@ -96,4 +100,9 @@ body {
 }
 .mobile-menu.active {
   transform: translateX(0);
+}
+
+/* Loading Screen */
+#page-loader {
+  transition: opacity 0.3s ease;
 }

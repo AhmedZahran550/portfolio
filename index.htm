@@ -34,7 +34,10 @@
       property="og:description"
       content="Scalable server-side applications. Expert in Node.js, Nest.js, and modern backend technologies. Check out my work on Medyour and LMS systems."
     />
-    <meta property="og:image" content="./1762421138799.jpg" />
+    <meta
+      property="og:image"
+      content="https://ahmedzahran550.github.io/portfolio/assets/1762421138799.jpg"
+    />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta
@@ -45,8 +48,27 @@
       property="twitter:description"
       content="Expert Node.js & Nest.js Backend Developer. Exploring high-performance APIs for Healthcare and Education."
     />
-    <meta property="twitter:image" content="./1762421138799.jpg" />
+    <meta
+      property="twitter:image"
+      content="https://ahmedzahran550.github.io/portfolio/assets/1762421138799.jpg"
+    />
     <link rel="icon" href="./assets/logo.png" type="image/jpeg" />
+
+    <!-- Security Meta Tags -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ahmedzahran550.github.io/portfolio/" />
+
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link rel="preload" href="./css/styles.css" as="style" />
+    <link rel="preload" href="./js/main.js" as="script" />
+    <link rel="preload" href="./assets/logo.png" as="image" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
@@ -76,7 +98,11 @@
             href="#"
             class="text-2xl font-bold gradient-text tracking-tighter"
             data-aos="fade-right"
-            ><img src="./assets/logo.png" width="20%"
+            aria-label="Ahmed Zahran - Home"
+            ><img
+              src="./assets/logo.png"
+              alt="Ahmed Zahran Logo"
+              class="w-12 md:w-16 h-auto"
           /></a>
 
           <!-- Desktop Menu -->
@@ -114,7 +140,12 @@
           </div>
 
           <!-- Mobile Menu Button -->
-          <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden text-white p-2"
+            aria-label="Toggle mobile menu"
+            aria-expanded="false"
+          >
             <svg
               class="w-6 h-6"
               fill="none"
@@ -233,6 +264,8 @@
               <a
                 href="https://www.linkedin.com/in/ahmedzahran556122b/"
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Ahmed Zahran's LinkedIn profile"
                 class="text-gray-400 hover:text-blue-500 transform hover:scale-110 transition-all"
               >
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -244,6 +277,8 @@
               <a
                 href="https://github.com/AhmedZahran550"
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Ahmed Zahran's GitHub profile"
                 class="text-gray-400 hover:text-purple-500 transform hover:scale-110 transition-all"
               >
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -284,7 +319,8 @@
               ></div>
               <img
                 src="./assets/1762421138799.jpg"
-                alt="Ahmed Zahran"
+                alt="Ahmed Zahran - Backend Developer"
+                loading="eager"
                 class="relative rounded-full w-full h-full object-cover border-2 border-gray-700/50 shadow-2xl z-10 transition-transform duration-500 group-hover:scale-[1.02]"
               />
             </div>
@@ -1014,6 +1050,8 @@
             <a
               href="https://www.linkedin.com/in/ahmedzahran556122b/"
               target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Connect on LinkedIn"
               class="group p-6 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-blue-400 transition-all hover:-translate-y-1"
             >
               <div
@@ -1150,6 +1188,76 @@
         </div>
       </div>
     </div>
+
+    <!-- Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-8 right-8 w-12 h-12 bg-blue-600 text-white rounded-full shadow-lg opacity-0 invisible transition-all hover:bg-blue-700 hover:scale-110 z-40"
+      aria-label="Back to top"
+    >
+      <svg
+        class="w-6 h-6 mx-auto"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"
+        />
+      </svg>
+    </button>
+
+    <!-- Loading Screen -->
+    <div
+      id="page-loader"
+      class="fixed inset-0 z-[999] bg-black flex items-center justify-center"
+    >
+      <div class="text-center">
+        <div
+          class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"
+        ></div>
+        <p class="text-gray-400">Loading Portfolio...</p>
+      </div>
+    </div>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ahmed Zahran",
+        "jobTitle": "Backend Developer",
+        "description": "Backend Developer specializing in Node.js, Nest.js, and PostgreSQL",
+        "url": "https://ahmedzahran550.github.io/portfolio/",
+        "image": "https://ahmedzahran550.github.io/portfolio/assets/1762421138799.jpg",
+        "sameAs": [
+          "https://www.linkedin.com/in/ahmedzahran556122b/",
+          "https://github.com/AhmedZahran550"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cairo",
+          "addressCountry": "Egypt"
+        },
+        "knowsAbout": [
+          "Node.js",
+          "Nest.js",
+          "PostgreSQL",
+          "TypeScript",
+          "Docker",
+          "Express.js",
+          "GraphQL"
+        ],
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Fayoum University"
+        }
+      }
+    </script>
+
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="./js/main.js"></script>

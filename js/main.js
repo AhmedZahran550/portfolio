@@ -1,23 +1,40 @@
+// Configuration
+const CONFIG = {
+  typewriter: {
+    phrases: [
+      "Backend Node.js Developer",
+      "Nest.js Expert",
+      "API Architect",
+      "Database Designer",
+    ],
+    typingSpeed: 100,
+    deletingSpeed: 50,
+    pauseBeforeDelete: 2000,
+    pauseBeforeType: 500,
+  },
+  particles: {
+    maxCount: 80,
+    areaPerParticle: 15000,
+    connectionDistance: 150,
+  },
+  aos: {
+    once: false,
+    offset: 100,
+    duration: 800,
+    easing: "ease-out-cubic",
+  },
+};
+
 // 1. Initialize Animate On Scroll
-AOS.init({
-  once: false, // Whether animation should happen only once
-  offset: 100, // Offset (in px) from the original trigger point
-  duration: 800, // Duration of animation
-  easing: "ease-out-cubic", // Easing function
-});
+AOS.init(CONFIG.aos);
 
 // 2. Typewriter Effect
 const textElement = document.getElementById("typewriter");
-const phrases = [
-  "Backend Node.js Developer",
-  "Nest.js Expert",
-  "API Architect",
-  "Database Designer",
-];
+const phrases = CONFIG.typewriter.phrases;
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
-let typeSpeed = 100;
+let typeSpeed = CONFIG.typewriter.typingSpeed;
 
 function typeWriter() {
   const currentPhrase = phrases[phraseIndex];
@@ -25,20 +42,20 @@ function typeWriter() {
   if (isDeleting) {
     textElement.textContent = currentPhrase.substring(0, charIndex - 1);
     charIndex--;
-    typeSpeed = 50;
+    typeSpeed = CONFIG.typewriter.deletingSpeed;
   } else {
     textElement.textContent = currentPhrase.substring(0, charIndex + 1);
     charIndex++;
-    typeSpeed = 100;
+    typeSpeed = CONFIG.typewriter.typingSpeed;
   }
 
   if (!isDeleting && charIndex === currentPhrase.length) {
     isDeleting = true;
-    typeSpeed = 2000; // Wait before deleting
+    typeSpeed = CONFIG.typewriter.pauseBeforeDelete;
   } else if (isDeleting && charIndex === 0) {
     isDeleting = false;
     phraseIndex = (phraseIndex + 1) % phrases.length;
-    typeSpeed = 500; // Wait before typing next
+    typeSpeed = CONFIG.typewriter.pauseBeforeType;
   }
 
   setTimeout(typeWriter, typeSpeed);
@@ -171,9 +188,12 @@ function openVideoModal(videoUrl) {
 function closeVideoModal() {
   videoModal.classList.add("hidden");
   videoModal.classList.remove("flex");
-  videoPlayer.pause(); // Stop video
-  videoPlayer.currentTime = 0; // Reset time
-  videoPlayer.src = ""; // Clear source
+  videoPlayer.pause();
+  videoPlayer.currentTime = 0;
+  // Wait for next frame to clear source to prevent warnings
+  setTimeout(() => {
+    videoPlayer.src = "";
+  }, 100);
   document.body.style.overflow = "auto";
 }
 
@@ -304,10 +324,12 @@ window.addEventListener("scroll", () => {
   const navbar = document.getElementById("navbar");
   if (window.scrollY > 50) {
     navbar.classList.add("shadow-lg");
-    navbar.classList.replace("h-20", "h-16");
+    navbar.classList.remove("h-20");
+    navbar.classList.add("h-16");
   } else {
     navbar.classList.remove("shadow-lg");
-    navbar.classList.replace("h-16", "h-20");
+    navbar.classList.remove("h-16");
+    navbar.classList.add("h-20");
   }
 });
 
@@ -316,77 +338,158 @@ const mobileBtn = document.getElementById("mobile-menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
 if (mobileBtn && mobileMenu) {
   mobileBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("active");
+    const isExpanded = mobileMenu.classList.toggle("active");
+    mobileBtn.setAttribute("aria-expanded", isExpanded);
   });
   mobileMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => mobileMenu.classList.remove("active"));
+    link.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+      mobileBtn.setAttribute("aria-expanded", "false");
+    });
   });
 }
 
-// 8. Canvas Particle System
-const canvas = document.getElementById("neural-network");
-const ctx = canvas.getContext("2d");
-let w, h, particles;
+// 6. Back to Top Button
+const backToTopBtn = document.getElementById("back-to-top");
 
-function resize() {
-  w = canvas.width = window.innerWidth;
-  h = canvas.height = window.innerHeight;
-}
-
-function initParticles() {
-  particles = [];
-  const particleCount = Math.min(w * 0.1, 100);
-  for (let i = 0; i < particleCount; i++) {
-    particles.push({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-      size: Math.random() * 2 + 1,
-    });
-  }
-}
-
-function animateCanvas() {
-  ctx.clearRect(0, 0, w, h);
-
-  particles.forEach((p, index) => {
-    p.x += p.vx;
-    p.y += p.vy;
-
-    if (p.x < 0 || p.x > w) p.vx *= -1;
-    if (p.y < 0 || p.y > h) p.vy *= -1;
-
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(59, 130, 246, 0.5)";
-    ctx.fill();
-
-    // Draw connections
-    for (let j = index + 1; j < particles.length; j++) {
-      const p2 = particles[j];
-      const dx = p.x - p2.x;
-      const dy = p.y - p2.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-
-      if (dist < 150) {
-        ctx.beginPath();
-        ctx.strokeStyle = `rgba(59, 130, 246, ${1 - (dist / 150) * 0.8})`;
-        ctx.lineWidth = 0.5;
-        ctx.moveTo(p.x, p.y);
-        ctx.lineTo(p2.x, p2.y);
-        ctx.stroke();
-      }
+if (backToTopBtn) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.remove("opacity-0", "invisible");
+    } else {
+      backToTopBtn.classList.add("opacity-0", "invisible");
     }
   });
-  requestAnimationFrame(animateCanvas);
+
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 }
 
-window.addEventListener("resize", () => {
-  resize();
-  initParticles();
+// 7. Active Navigation Highlighting
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-link");
+
+const observerOptions = {
+  threshold: 0.3,
+  rootMargin: "-80px 0px -80px 0px",
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute("id");
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${id}`) {
+          link.classList.add("active");
+        }
+      });
+    }
+  });
+}, observerOptions);
+
+sections.forEach((section) => observer.observe(section));
+
+// 8. Loading Screen
+window.addEventListener("load", () => {
+  const loader = document.getElementById("page-loader");
+  if (loader) {
+    loader.style.opacity = "0";
+    setTimeout(() => loader.remove(), 300);
+  }
 });
 
-resize();
-initParticles();
-animateCanvas();
+// 9. Canvas Particle System
+try {
+  const canvas = document.getElementById("neural-network");
+  if (!canvas) throw new Error("Canvas element not found");
+
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("Canvas context not supported");
+
+  let w, h, particles;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+
+  function initParticles() {
+    particles = [];
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReducedMotion) {
+      return; // Skip animation for accessibility
+    }
+
+    // Better formula: considers screen area
+    const particleCount = Math.min(
+      Math.floor((w * h) / CONFIG.particles.areaPerParticle),
+      CONFIG.particles.maxCount
+    );
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        size: Math.random() * 2 + 1,
+      });
+    }
+  }
+
+  function animateCanvas() {
+    ctx.clearRect(0, 0, w, h);
+
+    particles.forEach((p, index) => {
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(59, 130, 246, 0.5)";
+      ctx.fill();
+
+      // Draw connections
+      for (let j = index + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const dx = p.x - p2.x;
+        const dy = p.y - p2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < CONFIG.particles.connectionDistance) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(59, 130, 246, ${
+            1 - (dist / CONFIG.particles.connectionDistance) * 0.8
+          })`;
+          ctx.lineWidth = 0.5;
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+      }
+    });
+    requestAnimationFrame(animateCanvas);
+  }
+
+  window.addEventListener("resize", () => {
+    resize();
+    initParticles();
+  });
+
+  resize();
+  initParticles();
+  animateCanvas();
+} catch (error) {
+  console.error("Canvas initialization failed:", error);
+  // Fallback: hide canvas container
+  const canvasContainer = document.getElementById("canvas-container");
+  if (canvasContainer) canvasContainer.remove();
+}

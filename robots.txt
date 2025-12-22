@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ahmedzahran550.github.io/portfolio/sitemap.xml
