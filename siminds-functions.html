@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Siminds Cloud Functions | Ahmed Zahran</title>
+    <meta name="title" content="Siminds Cloud Functions | Ahmed Zahran" />
+    <meta
+      name="description"
+      content="A hybrid cloud architecture leveraging Firebase Gen 2 Cloud Functions and PostgreSQL for Siminds Virtual Labs."
+    />
+    <meta
+      name="keywords"
+      content="Serverless, Firebase Cloud Functions, Google Cloud Platform, Educational Technology, Scalable Backend, TypeScript, Ahmed Zahran"
+    />
+    <meta name="author" content="Ahmed Zahran" />
+
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://ahmedzahran550.github.io/portfolio/siminds-functions.html"
+    />
+    <meta
+      property="og:title"
+      content="Siminds Cloud Functions | Ahmed Zahran"
+    />
+    <meta
+      property="og:description"
+      content="Hybrid cloud serverless architecture for virtual labs."
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:title"
+      content="Siminds Cloud Functions | Ahmed Zahran"
+    />
+    <meta
+      property="twitter:description"
+      content="Hybrid cloud serverless architecture for virtual labs."
+    />
+    <meta
+      property="twitter:image"
+      content="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    />
+    <link rel="icon" href="./assets/logo.png" type="image/jpeg" />
+
+    <!-- Security Meta Tags -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link rel="preload" href="./css/styles.css" as="style" />
+    <link rel="preload" href="./js/main.js" as="script" />
+    <link rel="preload" href="./assets/logo.png" as="image" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./css/styles.css" rel="stylesheet" />
+  </head>
+  <body class="antialiased selection:bg-blue-500 selection:text-white">
+    <!-- Navbar -->
+    <nav
+      class="fixed top-0 w-full z-50 transition-all duration-300"
+      id="navbar"
+    >
+      <div
+        class="absolute inset-0 bg-black/70 backdrop-blur-md border-b border-white/5"
+      ></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="flex justify-between items-center h-20">
+          <a
+            href="index.htm"
+            class="text-2xl font-bold gradient-text tracking-tighter"
+            aria-label="Ahmed Zahran - Home"
+            ><img
+              src="./assets/logo.png"
+              alt="Ahmed Zahran Logo"
+              class="w-12 md:w-16 h-auto"
+          /></a>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="index.htm#home"
+              class="nav-link text-sm uppercase tracking-wider text-gray-300 hover:text-white transition-colors"
+              >Home</a
+            >
+            <a
+              href="index.htm#about"
+              class="nav-link text-sm uppercase tracking-wider text-gray-300 hover:text-white transition-colors"
+              >About</a
+            >
+            <a
+              href="index.htm#projects"
+              class="nav-link text-sm uppercase tracking-wider text-gray-300 hover:text-white transition-colors"
+              >Projects</a
+            >
+            <a
+              href="index.htm#contact"
+              class="nav-link text-sm uppercase tracking-wider text-gray-300 hover:text-white transition-colors"
+              >Contact</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden text-white p-2"
+            aria-label="Toggle mobile menu"
+            aria-expanded="false"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="mobile-menu md:hidden fixed top-20 right-0 w-full h-[calc(100vh-80px)] bg-black/95 backdrop-blur-xl border-l border-white/10 hidden"
+      >
+        <div class="flex flex-col space-y-6 p-8 text-center">
+          <a
+            href="index.htm#home"
+            class="text-xl text-gray-300 hover:text-white hover:scale-105 transition-transform"
+            >Home</a
+          >
+          <a
+            href="index.htm#projects"
+            class="text-xl text-gray-300 hover:text-white hover:scale-105 transition-transform"
+            >Projects</a
+          >
+          <a
+            href="index.htm#contact"
+            class="text-xl text-gray-300 hover:text-white hover:scale-105 transition-transform"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Project Hero -->
+    <section class="pt-32 pb-16 relative overflow-hidden">
+      <!-- Decorative Blobs -->
+      <div
+        class="absolute top-1/4 left-10 w-72 h-72 bg-yellow-500/10 rounded-full blur-3xl -z-10"
+      ></div>
+      <div
+        class="absolute bottom-1/4 right-10 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl -z-10"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+          <div
+            class="inline-block px-3 py-1 mb-4 border border-yellow-500/30 rounded-full bg-yellow-500/10 text-yellow-400 text-xs font-semibold tracking-wide uppercase"
+          >
+            Serverless Architecture
+          </div>
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 gradient-text">
+            Siminds Cloud Functions
+          </h1>
+          <p class="text-xl text-gray-400 leading-relaxed mb-8">
+            A hybrid cloud architecture leveraging Firebase Gen 2 Cloud
+            Functions and PostgreSQL for Siminds Virtual Labs. Handles high
+            concurrency and real-time events.
+          </p>
+
+          <div class="flex flex-wrap justify-center gap-4">
+            <span
+              class="px-6 py-3 bg-gray-800 text-gray-400 rounded-lg font-semibold border border-gray-700 cursor-not-allowed flex items-center gap-2"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                ></path>
+              </svg>
+              Private Repository
+            </span>
+          </div>
+        </div>
+
+        <!-- Featured Image (Instead of Video) -->
+        <div
+          class="max-w-5xl mx-auto mb-20 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group"
+          data-aos="zoom-in"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"
+          ></div>
+          <img
+            src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            alt="Serverless Architecture"
+            class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+
+        <!-- Technologies -->
+        <div
+          class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto mb-20"
+          data-aos="fade-up"
+        >
+          <div class="p-4 glass-card rounded-xl text-center">
+            <span class="block text-yellow-500 font-semibold">Firebase</span>
+          </div>
+          <div class="p-4 glass-card rounded-xl text-center">
+            <span class="block text-blue-400 font-semibold">GCP</span>
+          </div>
+          <div class="p-4 glass-card rounded-xl text-center">
+            <span class="block text-blue-300 font-semibold">PostgreSQL</span>
+          </div>
+          <div class="p-4 glass-card rounded-xl text-center">
+            <span class="block text-blue-500 font-semibold">TypeScript</span>
+          </div>
+          <div class="p-4 glass-card rounded-xl text-center">
+            <span class="block text-purple-400 font-semibold">Serverless</span>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="max-w-4xl mx-auto" data-aos="fade-up">
+          <div class="glass-card p-8 md:p-12 rounded-2xl space-y-12">
+            <!-- Overview -->
+            <section>
+              <h2
+                class="text-3xl font-bold text-white mb-6 border-l-4 border-yellow-500 pl-4"
+              >
+                Project Overview
+              </h2>
+              <div class="text-gray-400 space-y-4 leading-relaxed">
+                <p>
+                  This project represents the backend infrastructure for Siminds
+                  Virtual Labs. It is built as a Hybrid Cloud Architecture,
+                  leveraging the serverless scalability of Google Firebase (Gen
+                  2 Cloud Functions) for application logic and the relational
+                  implementation of PostgreSQL for complex data relationships.
+                </p>
+                <p>
+                  This hybrid approach allows the system to handle real-time
+                  user events while maintaining structured, query-heavy data for
+                  educational analytics.
+                </p>
+              </div>
+            </section>
+
+            <!-- Key Features -->
+            <section>
+              <h2
+                class="text-3xl font-bold text-white mb-6 border-l-4 border-blue-500 pl-4"
+              >
+                Key Features
+              </h2>
+              <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3 class="text-xl font-semibold text-white mb-3">
+                    Strict Session Management
+                  </h3>
+                  <ul class="text-gray-400 space-y-2 list-disc list-inside">
+                    <li>
+                      <strong>Concurrency:</strong> Custom logic in blocking
+                      functions to prevent account sharing.
+                    </li>
+                    <li>
+                      <strong>Limits:</strong> Enforces max concurrent users per
+                      institution.
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-white mb-3">
+                    Scoring Engine
+                  </h3>
+                  <ul class="text-gray-400 space-y-2 list-disc list-inside">
+                    <li>
+                      <strong>5Es Model:</strong> Implements Engage, Explore,
+                      Explain, Elaborate, Evaluate model.
+                    </li>
+                    <li>
+                      <strong>Auto-Grading:</strong> Automated grading of
+                      complex experiment results.
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-white mb-3">
+                    Architecture
+                  </h3>
+                  <ul class="text-gray-400 space-y-2 list-disc list-inside">
+                    <li>
+                      <strong>Event-Driven:</strong> Listeners for Auth,
+                      Courses, and User events.
+                    </li>
+                    <li>
+                      <strong>Hybrid DB:</strong> SQL for core relations +
+                      Firestore for realtime docs.
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-white mb-3">
+                    Tech Specs
+                  </h3>
+                  <ul class="text-gray-400 space-y-2 list-disc list-inside">
+                    <li><strong>Runtime:</strong> Node.js with TypeScript.</li>
+                    <li>
+                      <strong>Compute:</strong> Firebase Cloud Functions Gen 2.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <!-- Performance -->
+            <section>
+              <h2
+                class="text-3xl font-bold text-white mb-6 border-l-4 border-green-500 pl-4"
+              >
+                Performance at Scale
+              </h2>
+              <div class="space-y-6">
+                <div class="bg-black/30 p-6 rounded-xl border border-white/5">
+                  <h3 class="text-lg font-bold text-white mb-2">
+                    Gen 2 Concurrency
+                  </h3>
+                  <p class="text-gray-400 text-sm">
+                    Handles 1000+ concurrent requests per instance, dramatically
+                    reducing cold starts compared to Gen 1.
+                  </p>
+                </div>
+                <div class="bg-black/30 p-6 rounded-xl border border-white/5">
+                  <h3 class="text-lg font-bold text-white mb-2">
+                    Optimized Queries
+                  </h3>
+                  <p class="text-gray-400 text-sm">
+                    Consolidated SQL joins reduce critical login path latency by
+                    ~66% compared to separate fetches.
+                  </p>
+                </div>
+                <div class="bg-black/30 p-6 rounded-xl border border-white/5">
+                  <h3 class="text-lg font-bold text-white mb-2">
+                    Server-Side Computation
+                  </h3>
+                  <p class="text-gray-400 text-sm">
+                    Complex scoring logic is processed server-side to ensure
+                    consistency and prevent client-side tampering.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800 bg-black/40 backdrop-blur">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-gray-500">
+          &copy; 2024 Ahmed Zahran. Built with
+          <span class="text-red-500">♥</span> and Node.js
+        </p>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-8 right-8 w-12 h-12 bg-blue-600 text-white rounded-full shadow-lg opacity-0 invisible transition-all hover:bg-blue-700 hover:scale-110 z-40"
+      aria-label="Back to top"
+    >
+      <svg
+        class="w-6 h-6 mx-auto"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"
+        />
+      </svg>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
